@@ -89,7 +89,7 @@ app.get('/', function (req, res) {
 
 app.listen(3030, function () {
 	console.log('***********************************************')
-	console.log('* Welcome on Bitcanna-web')	
-	console.log('* Bitcanna-web app listening on port 3030')
+	console.log('* Welcome on Cosmos-faucet')	
+	console.log('* Cosmos-faucet app listening on port 3030')
 	console.log('**********************************************')
 })
