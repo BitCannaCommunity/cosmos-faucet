@@ -34,7 +34,7 @@ function sendTx(adresseTo,res) {
 		const msgSend = new message.cosmos.bank.v1beta1.MsgSend({
 			from_address: address,
 			to_address: adresseTo,
-			amount: [{ denom: "ubcna", amount: String(1000000) }]		// 6 decimal places (1000000 uatom = 1 ATOM)
+			amount: [{ denom: "ubcna", amount: String(1000000) }]		// 7 decimal places (1000000 ubcna = 1 BCNA)
 		});
 		
 		const msgSendAny = new message.google.protobuf.Any({
