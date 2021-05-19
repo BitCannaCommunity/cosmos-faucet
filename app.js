@@ -16,8 +16,9 @@ let config = JSON.parse(rawdata);
 const mnemonic = config.mnemonic;
 const chainId = config.chainId;
 const lcdUrl = config.lcdUrl;
+const denom = config.denom;
 const cosmos = new Cosmos(lcdUrl, chainId);
-cosmos.setBech32MainPrefix("bcna");
+cosmos.setBech32MainPrefix(config.prefix);
 cosmos.setPath("m/44'/118'/0'/0/0");
 const address = cosmos.getAddress(mnemonic);
 const privKey = cosmos.getECPairPriv(mnemonic);
@@ -34,7 +35,7 @@ function sendTx(adresseTo,res) {
 		const msgSend = new message.cosmos.bank.v1beta1.MsgSend({
 			from_address: address,
 			to_address: adresseTo,
-			amount: [{ denom: "ubcna", amount: String(1000000) }]		// 7 decimal places (1000000 ubcna = 1 BCNA)
+			amount: [{ denom: denom, amount: String(config.AmountSend) }]		// 7 decimal places (1000000 ubcna = 1 BCNA)
 		});
 		
 		const msgSendAny = new message.google.protobuf.Any({
@@ -44,7 +45,7 @@ function sendTx(adresseTo,res) {
 		
 		//console.log("msgSendAny: ", msgSendAny);
 		
-		const txBody = new message.cosmos.tx.v1beta1.TxBody({ messages: [msgSendAny], memo: "Send from CosmosJs =)" });
+		const txBody = new message.cosmos.tx.v1beta1.TxBody({ messages: [msgSendAny], memo: config.memo });
 		
 		//console.log("txBody: ", txBody);
 		//return;
@@ -57,8 +58,8 @@ function sendTx(adresseTo,res) {
 		});
 		
 		const feeValue = new message.cosmos.tx.v1beta1.Fee({
-			amount: [{ denom: "ubcna", amount: String(5000) }],
-			gas_limit: 200000
+			amount: [{ denom: denom, amount: String(config.feeAmount) }],
+			gas_limit: config.gasLimit
 		});
 		
 		const authInfo = new message.cosmos.tx.v1beta1.AuthInfo({ signer_infos: [signerInfo], fee: feeValue });
@@ -87,9 +88,9 @@ app.get('/', function (req, res) {
 	}	
 })
 
-app.listen(3030, function () {
+app.listen(config.lport, function () {
 	console.log('***********************************************')
 	console.log('* Welcome on Cosmos-faucet')	
-	console.log('* Cosmos-faucet app listening on port 3030')
+	console.log('* Cosmos-faucet app listening on port '+config.lport)
 	console.log('**********************************************')
 })
