@@ -6,8 +6,11 @@
 </h1>
  
 
+<p align="center">
+⭐ Cosmos-faucet is a simple alternative to the tendermint/faucet script. This is an idea adapted for ➡️ <a href="https://www.bitcanna.io/">Bitcanna</a> and can be used for any project using cosmos.  
+  
+</p>
 
-⭐ Cosmos-faucet is a simple alternative to the tendermint/faucet script, this is an idea adapted for ➡️ bitcanna and can be used for any project using cosmos.
 
 ## Prerequisites
 
