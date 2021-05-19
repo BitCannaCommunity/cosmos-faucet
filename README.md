@@ -36,5 +36,5 @@ Edit this part with your value:
 ```
 ## Run it
 ```
-node app.js
+node --experimental-modules --es-module-specifier-resolution=node app.js
 ```
