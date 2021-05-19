@@ -1,7 +1,13 @@
-# Cosmos-faucet
+<p align="center"> 
+  <a href="https://www.cosmostation.io" target="_blank" rel="noopener noreferrer"><img src="https://i.imgur.com/TBapjYI.png" alt="Cosmostation logo"></a>
+</p>
+<h1 align="center">
+    Cosmos-faucet
+</h1>
+ 
 
 
-cosmos-faucet is a simple alternative to the tendermint/faucet script 
+⭐ Cosmos-faucet is a simple alternative to the tendermint/faucet script, this is an idea adapted for ➡️ bitcanna and can be used for any project using cosmos.
 
 ## Prerequisites
 
