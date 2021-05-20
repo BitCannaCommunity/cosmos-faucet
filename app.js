@@ -28,13 +28,13 @@ const pubKeyAny = cosmos.getPubKeyAny(privKey);
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 
-function sendTx(adresseTo,res) {
+function sendTx(addressTo,res) {
 	cosmos.getAccounts(address).then(data => {
 		// signDoc = (1)txBody + (2)authInfo
 		// ---------------------------------- (1)txBody ----------------------------------
 		const msgSend = new message.cosmos.bank.v1beta1.MsgSend({
 			from_address: address,
-			to_address: adresseTo,
+			to_address: addressTo,
 			amount: [{ denom: denom, amount: String(config.AmountSend) }]		// 7 decimal places (1000000 ubcna = 1 BCNA)
 		});
 		
@@ -78,13 +78,13 @@ function sendTx(adresseTo,res) {
 // Routing
 app.get('/', function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	if (req.query.adresse === '') {
+	if (req.query.address === '') {
 		console.log(false)
 		res.send({error:'Already funded'});
 	} else {
-		var rtnTx = sendTx(req.query.adresse,res)
+		var rtnTx = sendTx(req.query.address,res)
 		
-		console.log(req.query.adresse)		
+		console.log(req.query.address)		
 	}	
 })
 
