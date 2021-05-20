@@ -43,7 +43,11 @@ Edit this part with your value:
 
 }
 ```
-## Run it
+## Run it (server side)
 ```
 node --experimental-modules --es-module-specifier-resolution=node app.js
+```
+## Client request
+```
+curl -s "http://testnet-faucet.bitcanna.io:8000/?address=bcna1xvuxv4znmmeu96ulxhldvyt32whp57vhyzg5vh" | jq
 ```
