@@ -19,7 +19,7 @@ node version >=14.0.0
 ## Installation
 
 ```sh
-git clone https://github.com/atmoner/cosmos-faucet.git
+git clone https://github.com/BitCannaCommunity/cosmos-faucet.git
 cd cosmos-faucet
 npm install
 ```
